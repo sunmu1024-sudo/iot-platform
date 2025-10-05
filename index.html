@@ -1270,7 +1270,7 @@
             max-width: 600px;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .modal-header {
@@ -1283,7 +1283,7 @@
         }
 
         .modal-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--text-primary);
         }
@@ -1294,6 +1294,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-secondary);
+            padding: 5px;
         }
 
         .modal-body {
@@ -1315,7 +1316,7 @@
             width: 100%;
             padding: 10px;
             border: 1px solid var(--border-color);
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 1rem;
             transition: all 0.3s;
         }
@@ -1330,7 +1331,7 @@
             width: 100%;
             padding: 10px;
             border: 1px solid var(--border-color);
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 1rem;
             background: var(--card-bg);
         }
@@ -1339,71 +1340,8 @@
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            margin-top: 20px;
-        }
-
-        /* 报告样式 */
-        .report-container {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .report-header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 20px;
-        }
-
-        .report-title {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .report-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-        }
-
-        .report-section {
-            margin-bottom: 25px;
-        }
-
-        .report-section-title {
-            font-size: 1.4rem;
-            color: var(--text-primary);
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-        }
-
-        .report-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-
-        .report-table th, .report-table td {
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            text-align: left;
-        }
-
-        .report-table th {
-            background: var(--light-bg);
-            font-weight: 600;
-        }
-
-        .report-summary {
-            background: var(--light-bg);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
         }
 
         /* 响应式设计 */
@@ -2063,17 +2001,17 @@
     <!-- 智能通知 -->
     <div id="smart-notifications"></div>
 
-    <!-- 添加设备模态框 -->
+    <!-- 模态框 -->
     <div id="add-device-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">添加新设备</h3>
+                <h3 class="modal-title">添加设备</h3>
                 <button class="modal-close" onclick="closeModal('add-device-modal')">×</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
                     <label class="form-label">设备名称</label>
-                    <input type="text" class="form-input" id="device-name" placeholder="输入设备名称">
+                    <input type="text" class="form-input" id="device-name" placeholder="请输入设备名称">
                 </div>
                 <div class="form-group">
                     <label class="form-label">设备类型</label>
@@ -2087,110 +2025,94 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label">安装位置</label>
-                    <input type="text" class="form-input" id="device-location" placeholder="输入安装位置">
+                    <input type="text" class="form-input" id="device-location" placeholder="请输入安装位置">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">初始电池电量 (%)</label>
-                    <input type="number" class="form-input" id="device-battery" min="0" max="100" value="100">
+                    <label class="form-label">初始电量</label>
+                    <input type="number" class="form-input" id="device-battery" min="0" max="100" value="80">
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn" onclick="closeModal('add-device-modal')">取消</button>
-                <button class="btn btn-primary" onclick="addNewDevice()">添加设备</button>
+                <button class="btn btn-primary" onclick="addDevice()">添加</button>
             </div>
         </div>
     </div>
 
-    <!-- 添加节点模态框 -->
     <div id="add-node-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">添加新节点</h3>
+                <h3 class="modal-title">添加边缘节点</h3>
                 <button class="modal-close" onclick="closeModal('add-node-modal')">×</button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
                     <label class="form-label">节点名称</label>
-                    <input type="text" class="form-input" id="node-name" placeholder="输入节点名称">
+                    <input type="text" class="form-input" id="node-name" placeholder="请输入节点名称">
                 </div>
                 <div class="form-group">
                     <label class="form-label">节点位置</label>
-                    <input type="text" class="form-input" id="node-location" placeholder="输入节点位置">
+                    <input type="text" class="form-input" id="node-location" placeholder="请输入节点位置">
                 </div>
                 <div class="form-group">
-                    <label class="form-label">最大连接设备数</label>
-                    <input type="number" class="form-input" id="node-max-devices" min="1" max="50" value="10">
+                    <label class="form-label">节点容量</label>
+                    <select class="form-select" id="node-capacity">
+                        <option value="small">小型节点 (最多5台设备)</option>
+                        <option value="medium">中型节点 (最多10台设备)</option>
+                        <option value="large">大型节点 (最多20台设备)</option>
+                    </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="btn" onclick="closeModal('add-node-modal')">取消</button>
-                <button class="btn btn-primary" onclick="addNewNode()">添加节点</button>
+                <button class="btn btn-primary" onclick="addNode()">添加</button>
             </div>
         </div>
     </div>
 
-    <!-- 系统设置模态框 -->
-    <div id="system-settings-modal" class="modal">
+    <div id="user-management-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">系统设置</h3>
-                <button class="modal-close" onclick="closeModal('system-settings-modal')">×</button>
+                <h3 class="modal-title">用户管理</h3>
+                <button class="modal-close" onclick="closeModal('user-management-modal')">×</button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">数据保留策略</label>
-                    <select class="form-select" id="data-retention">
-                        <option value="30">30天</option>
-                        <option value="90">90天</option>
-                        <option value="180">180天</option>
-                        <option value="365">1年</option>
-                    </select>
+                <div class="user-management-header">
+                    <button class="btn btn-primary" onclick="showAddUserForm()">添加用户</button>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">自动备份频率</label>
-                    <select class="form-select" id="backup-frequency">
-                        <option value="daily">每日</option>
-                        <option value="weekly">每周</option>
-                        <option value="monthly">每月</option>
-                    </select>
+                <div id="user-management-list">
+                    <!-- 用户列表将通过JS动态生成 -->
                 </div>
-                <div class="form-group">
-                    <label class="form-label">通知设置</label>
-                    <div>
-                        <input type="checkbox" id="email-notifications" checked>
-                        <label for="email-notifications">邮件通知</label>
+                <div id="add-user-form" style="display: none; margin-top: 20px; padding: 15px; background: var(--light-bg); border-radius: 8px;">
+                    <h4>添加新用户</h4>
+                    <div class="form-group">
+                        <label class="form-label">用户名</label>
+                        <input type="text" class="form-input" id="new-user-name" placeholder="请输入用户名">
                     </div>
-                    <div>
-                        <input type="checkbox" id="sms-notifications">
-                        <label for="sms-notifications">短信通知</label>
+                    <div class="form-group">
+                        <label class="form-label">角色</label>
+                        <select class="form-select" id="new-user-role">
+                            <option value="管理员">管理员</option>
+                            <option value="操作员">操作员</option>
+                            <option value="观察员">观察员</option>
+                        </select>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">API访问密钥</label>
-                    <input type="text" class="form-input" id="api-key" value="sk_5g_edge_2024_bbxy" readonly>
-                    <button class="btn btn-sm" onclick="generateNewApiKey()" style="margin-top: 5px;">生成新密钥</button>
+                    <div class="form-group">
+                        <label class="form-label">邮箱</label>
+                        <input type="email" class="form-input" id="new-user-email" placeholder="请输入邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">电话</label>
+                        <input type="tel" class="form-input" id="new-user-phone" placeholder="请输入电话">
+                    </div>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="btn btn-primary" onclick="addUser()">添加</button>
+                        <button class="btn" onclick="hideAddUserForm()">取消</button>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" onclick="closeModal('system-settings-modal')">取消</button>
-                <button class="btn btn-primary" onclick="saveSystemSettings()">保存设置</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 报告预览模态框 -->
-    <div id="report-preview-modal" class="modal">
-        <div class="modal-content" style="max-width: 90%; max-height: 90vh; overflow-y: auto;">
-            <div class="modal-header">
-                <h3 class="modal-title">数据分析报告预览</h3>
-                <button class="modal-close" onclick="closeModal('report-preview-modal')">×</button>
-            </div>
-            <div class="modal-body" id="report-preview-content">
-                <!-- 报告内容将通过JS动态生成 -->
-            </div>
-            <div class="modal-footer">
-                <button class="btn" onclick="closeModal('report-preview-modal')">关闭</button>
-                <button class="btn btn-primary" onclick="downloadReport()">下载报告</button>
+                <button class="btn" onclick="closeModal('user-management-modal')">关闭</button>
             </div>
         </div>
     </div>
@@ -2202,6 +2124,7 @@
                 this.devices = [];
                 this.nodes = [];
                 this.warnings = [];
+                this.users = [];
                 this.analyticsData = {};
                 this.currentTimeRange = '24h';
                 this.currentDataType = 'all';
@@ -2299,6 +2222,22 @@
                     }
                 ];
 
+                // 加载用户数据
+                this.users = [
+                    {
+                        id: 'USER001', name: '孙木', role: '管理员',
+                        email: 'sunmu@bbu.edu.cn', phone: '138****1234', avatar: '孙'
+                    },
+                    {
+                        id: 'USER002', name: '李华', role: '操作员',
+                        email: 'lihua@bbu.edu.cn', phone: '139****5678', avatar: '李'
+                    },
+                    {
+                        id: 'USER003', name: '王芳', role: '观察员',
+                        email: 'wangfang@bbu.edu.cn', phone: '137****9012', avatar: '王'
+                    }
+                ];
+
                 // 生成符合真实时间的数据
                 this.generateRealTimeData();
                 
@@ -2309,20 +2248,20 @@
             // 生成符合真实时间的数据
             generateRealTimeData() {
                 const now = new Date();
+                const currentHour = now.getHours();
                 
+                // 根据时间范围生成数据
                 if (this.currentTimeRange === '24h') {
-                    this.generate24HourData(now);
+                    this.generate24HourData(currentHour);
                 } else if (this.currentTimeRange === '7d') {
-                    this.generate7DayData(now);
+                    this.generate7DayData();
                 } else if (this.currentTimeRange === '30d') {
-                    this.generate30DayData(now);
+                    this.generate30DayData();
                 }
             }
 
             // 生成24小时数据
-            generate24HourData(now) {
-                const currentHour = now.getHours();
-                
+            generate24HourData(currentHour) {
                 // 生成24小时的时间标签
                 const timeLabels = [];
                 for (let i = 0; i < 24; i++) {
@@ -2405,26 +2344,45 @@
             }
 
             // 生成7天数据
-            generate7DayData(now) {
-                const days = [];
-                const temperature = [];
-                const humidity = [];
-                const light = [];
-                const pressure = [];
-                const airQuality = [];
+            generate7DayData() {
+                const timeLabels = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
                 
-                // 生成过去7天的日期
-                for (let i = 6; i >= 0; i--) {
-                    const date = new Date(now);
-                    date.setDate(date.getDate() - i);
-                    days.push(`${date.getMonth()+1}/${date.getDate()}`);
-                    
-                    // 生成每日平均数据
-                    temperature.push(parseFloat((20 + Math.random() * 10).toFixed(1)));
-                    humidity.push(Math.round(60 + Math.random() * 20));
-                    light.push(Math.round(400 + Math.random() * 500));
-                    pressure.push(parseFloat((101.0 + Math.random() * 1.0).toFixed(1)));
-                    airQuality.push(Math.round(40 + Math.random() * 40));
+                // 生成温度数据 - 模拟一周温度变化
+                const temperature = [];
+                for (let i = 0; i < 7; i++) {
+                    // 模拟一周温度变化，周末温度略高
+                    let baseTemp = 22 + (i === 5 || i === 6 ? 2 : 0);
+                    // 添加随机波动
+                    baseTemp += (Math.random() - 0.5) * 4;
+                    temperature.push(parseFloat(baseTemp.toFixed(1)));
+                }
+                
+                // 生成湿度数据
+                const humidity = temperature.map(temp => {
+                    let baseHumidity = 65 - (temp - 22) * 3;
+                    baseHumidity += (Math.random() - 0.5) * 15;
+                    return Math.max(40, Math.min(85, Math.round(baseHumidity)));
+                });
+                
+                // 生成光照数据
+                const light = [];
+                for (let i = 0; i < 7; i++) {
+                    let baseLight = 500 + (Math.random() - 0.5) * 200;
+                    light.push(Math.round(baseLight));
+                }
+                
+                // 生成气压数据
+                const pressure = [];
+                for (let i = 0; i < 7; i++) {
+                    let basePressure = 101.3 + (Math.random() - 0.5) * 1;
+                    pressure.push(parseFloat(basePressure.toFixed(1)));
+                }
+                
+                // 生成空气质量数据
+                const airQuality = [];
+                for (let i = 0; i < 7; i++) {
+                    let baseQuality = 50 + (Math.random() - 0.5) * 30;
+                    airQuality.push(Math.max(20, Math.min(100, Math.round(baseQuality))));
                 }
                 
                 this.analyticsData = {
@@ -2433,34 +2391,53 @@
                     light,
                     pressure,
                     airQuality,
-                    timeLabels: days
+                    timeLabels
                 };
             }
 
             // 生成30天数据
-            generate30DayData(now) {
-                const days = [];
-                const temperature = [];
-                const humidity = [];
-                const light = [];
-                const pressure = [];
-                const airQuality = [];
+            generate30DayData() {
+                const timeLabels = [];
+                for (let i = 1; i <= 30; i++) {
+                    timeLabels.push(`${i}日`);
+                }
                 
-                // 生成过去30天的日期
-                for (let i = 29; i >= 0; i--) {
-                    const date = new Date(now);
-                    date.setDate(date.getDate() - i);
-                    days.push(`${date.getMonth()+1}/${date.getDate()}`);
-                    
-                    // 生成每日平均数据，模拟月度趋势
-                    const dayOfMonth = date.getDate();
-                    const monthlyTrend = Math.sin((dayOfMonth - 15) / 15 * Math.PI) * 3;
-                    
-                    temperature.push(parseFloat((20 + monthlyTrend + Math.random() * 5).toFixed(1)));
-                    humidity.push(Math.round(60 - monthlyTrend + Math.random() * 15));
-                    light.push(Math.round(400 + Math.random() * 400));
-                    pressure.push(parseFloat((101.0 + Math.random() * 1.0).toFixed(1)));
-                    airQuality.push(Math.round(40 + Math.random() * 40));
+                // 生成温度数据 - 模拟一个月温度变化
+                const temperature = [];
+                for (let i = 0; i < 30; i++) {
+                    // 模拟温度逐渐升高趋势
+                    let baseTemp = 20 + (i / 30) * 8;
+                    // 添加随机波动
+                    baseTemp += (Math.random() - 0.5) * 6;
+                    temperature.push(parseFloat(baseTemp.toFixed(1)));
+                }
+                
+                // 生成湿度数据
+                const humidity = temperature.map(temp => {
+                    let baseHumidity = 70 - (temp - 22) * 2;
+                    baseHumidity += (Math.random() - 0.5) * 20;
+                    return Math.max(35, Math.min(90, Math.round(baseHumidity)));
+                });
+                
+                // 生成光照数据
+                const light = [];
+                for (let i = 0; i < 30; i++) {
+                    let baseLight = 450 + (Math.random() - 0.5) * 300;
+                    light.push(Math.round(baseLight));
+                }
+                
+                // 生成气压数据
+                const pressure = [];
+                for (let i = 0; i < 30; i++) {
+                    let basePressure = 101.2 + (Math.random() - 0.5) * 1.5;
+                    pressure.push(parseFloat(basePressure.toFixed(1)));
+                }
+                
+                // 生成空气质量数据
+                const airQuality = [];
+                for (let i = 0; i < 30; i++) {
+                    let baseQuality = 45 + (Math.random() - 0.5) * 40;
+                    airQuality.push(Math.max(15, Math.min(95, Math.round(baseQuality))));
                 }
                 
                 this.analyticsData = {
@@ -2469,7 +2446,7 @@
                     light,
                     pressure,
                     airQuality,
-                    timeLabels: days
+                    timeLabels
                 };
             }
 
@@ -2613,6 +2590,7 @@
                 this.renderNodesGrid();
                 this.updateWarningsDisplay();
                 this.updateRealtimeDisplay();
+                this.renderUserManagement();
             }
 
             renderDevicesTable() {
@@ -2770,6 +2748,32 @@
                               '正常'}
                         </div>
                         <div class="sensor-time">${device.lastReport}</div>
+                    </div>
+                `).join('');
+            }
+
+            renderUserManagement() {
+                const container = document.getElementById('user-management-list');
+                if (!container) return;
+
+                container.innerHTML = this.users.map(user => `
+                    <div class="user-item">
+                        <div class="user-avatar">${user.avatar}</div>
+                        <div class="user-details">
+                            <div class="user-name">${user.name}</div>
+                            <div class="user-role">${user.role}</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">
+                                ${user.email} | ${user.phone}
+                            </div>
+                        </div>
+                        <div class="node-actions">
+                            <button class="btn btn-sm" onclick="platform.editUser('${user.id}')">
+                                编辑
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="platform.deleteUser('${user.id}')">
+                                删除
+                            </button>
+                        </div>
                     </div>
                 `).join('');
             }
@@ -3041,6 +3045,230 @@
                 });
             }
 
+            // 数据导出功能
+exportData() {
+    const timeRange = this.currentTimeRange;
+    const dataType = this.currentDataType;
+    
+    // 创建CSV内容 - 使用正确的编码
+    let csvContent = "\uFEFF"; // 添加BOM头，确保Excel正确识别UTF-8编码
+    csvContent += "时间,温度(°C),湿度(%),光照强度,气压(hPa),空气质量指数\n";
+    
+    this.analyticsData.timeLabels.forEach((time, index) => {
+        csvContent += `${time},${this.analyticsData.temperature[index]},${this.analyticsData.humidity[index]},${this.analyticsData.light[index]},${this.analyticsData.pressure[index]},${this.analyticsData.airQuality[index]}\n`;
+    });
+    
+    // 创建Blob并下载 - 指定UTF-8编码
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    
+    // 生成有意义的文件名
+    const fileName = `物联网平台监测数据_${this.getTimeRangeLabel(timeRange)}_${new Date().toISOString().split('T')[0]}.csv`;
+    link.setAttribute("download", fileName);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    this.showNotification('数据导出', `已成功导出${this.getTimeRangeLabel(timeRange)}的${this.getDataTypeLabel(dataType)}`, 'success');
+}
+
+            // 生成报告功能
+generateReport() {
+    const timeRange = this.currentTimeRange;
+    
+    // 创建报告内容
+    const reportContent = `物联网平台数据分析报告
+
+报告时间: ${new Date().toLocaleString()}
+时间范围: ${this.getTimeRangeLabel(timeRange)}
+数据总量: ${this.analyticsData.timeLabels.length} 个数据点
+
+数据统计摘要:
+- 平均温度: ${(this.analyticsData.temperature.reduce((a, b) => a + b, 0) / this.analyticsData.temperature.length).toFixed(1)}°C
+- 平均湿度: ${(this.analyticsData.humidity.reduce((a, b) => a + b, 0) / this.analyticsData.humidity.length).toFixed(1)}%
+- 平均光照: ${(this.analyticsData.light.reduce((a, b) => a + b, 0) / this.analyticsData.light.length).toFixed(0)} lux
+- 平均气压: ${(this.analyticsData.pressure.reduce((a, b) => a + b, 0) / this.analyticsData.pressure.length).toFixed(1)} hPa
+- 平均空气质量: ${(this.analyticsData.airQuality.reduce((a, b) => a + b, 0) / this.analyticsData.airQuality.length).toFixed(0)} AQI
+
+设备状态概览:
+- 在线设备: ${this.devices.filter(d => d.status === 'online').length} 台
+- 离线设备: ${this.devices.filter(d => d.status === 'offline').length} 台
+- 异常设备: ${this.devices.filter(d => d.status === 'warning').length} 台
+
+警告统计:
+- 未处理警告: ${this.warnings.filter(w => !w.resolved).length} 个
+- 已处理警告: ${this.warnings.filter(w => w.resolved).length} 个
+
+系统运行状态:
+- 边缘节点: ${this.nodes.length} 个
+- 系统运行时间: 15天 8小时 23分钟
+- 数据库状态: 正常
+- API服务: 运行中
+
+报告生成: 智能5G边缘计算平台 - 蚌埠学院
+                `;
+    
+    // 创建Blob并下载
+    const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8;' });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    
+    // 生成有意义的文件名
+    const fileName = `物联网平台分析报告_${this.getTimeRangeLabel(timeRange)}_${new Date().toISOString().split('T')[0]}.txt`;
+    link.setAttribute("download", fileName);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    this.showNotification('报告生成', `${this.getTimeRangeLabel(timeRange)}分析报告已生成`, 'success');
+}
+
+            // 添加设备功能
+            addDevice() {
+                const name = document.getElementById('device-name').value;
+                const type = document.getElementById('device-type').value;
+                const location = document.getElementById('device-location').value;
+                const battery = parseInt(document.getElementById('device-battery').value);
+                
+                if (!name || !location) {
+                    this.showNotification('添加设备', '请填写完整的设备信息', 'warning');
+                    return;
+                }
+                
+                const newDevice = {
+                    id: 'DEV' + (this.devices.length + 1).toString().padStart(3, '0'),
+                    name: name,
+                    type: type,
+                    status: 'online',
+                    location: location,
+                    battery: battery,
+                    signal: '强',
+                    lastReport: '刚刚',
+                    temperature: 22 + Math.random() * 6,
+                    humidity: 60 + Math.random() * 20
+                };
+                
+                this.devices.push(newDevice);
+                this.filteredDevices = [...this.devices];
+                this.renderDevicesTable();
+                this.updateBadges();
+                this.closeModal('add-device-modal');
+                this.showNotification('添加设备', `设备 ${name} 添加成功`, 'success');
+                
+                // 清空表单
+                document.getElementById('device-name').value = '';
+                document.getElementById('device-location').value = '';
+                document.getElementById('device-battery').value = '80';
+            }
+
+            // 添加节点功能
+            addNode() {
+                const name = document.getElementById('node-name').value;
+                const location = document.getElementById('node-location').value;
+                const capacity = document.getElementById('node-capacity').value;
+                
+                if (!name || !location) {
+                    this.showNotification('添加节点', '请填写完整的节点信息', 'warning');
+                    return;
+                }
+                
+                const maxDevices = {
+                    'small': 5,
+                    'medium': 10,
+                    'large': 20
+                }[capacity];
+                
+                const newNode = {
+                    id: 'NODE' + (this.nodes.length + 1).toString().padStart(3, '0'),
+                    name: name,
+                    status: 'online',
+                    cpu: 20 + Math.random() * 30,
+                    memory: 30 + Math.random() * 40,
+                    storage: 20 + Math.random() * 30,
+                    network: 15 + Math.random() * 25,
+                    devices: 0,
+                    location: location,
+                    lastActive: '刚刚'
+                };
+                
+                this.nodes.push(newNode);
+                this.renderNodesGrid();
+                this.updateBadges();
+                this.closeModal('add-node-modal');
+                this.showNotification('添加节点', `节点 ${name} 添加成功`, 'success');
+                
+                // 清空表单
+                document.getElementById('node-name').value = '';
+                document.getElementById('node-location').value = '';
+            }
+
+            // 用户管理功能
+            addUser() {
+                const name = document.getElementById('new-user-name').value;
+                const role = document.getElementById('new-user-role').value;
+                const email = document.getElementById('new-user-email').value;
+                const phone = document.getElementById('new-user-phone').value;
+                
+                if (!name || !email || !phone) {
+                    this.showNotification('添加用户', '请填写完整的用户信息', 'warning');
+                    return;
+                }
+                
+                const newUser = {
+                    id: 'USER' + (this.users.length + 1).toString().padStart(3, '0'),
+                    name: name,
+                    role: role,
+                    email: email,
+                    phone: phone,
+                    avatar: name.charAt(0)
+                };
+                
+                this.users.push(newUser);
+                this.renderUserManagement();
+                this.showNotification('添加用户', `用户 ${name} 添加成功`, 'success');
+                
+                // 清空表单并隐藏
+                document.getElementById('new-user-name').value = '';
+                document.getElementById('new-user-email').value = '';
+                document.getElementById('new-user-phone').value = '';
+                this.hideAddUserForm();
+            }
+
+            editUser(userId) {
+                const user = this.users.find(u => u.id === userId);
+                if (user) {
+                    // 在实际应用中，这里应该打开编辑表单
+                    this.showNotification('编辑用户', `编辑用户 ${user.name} 的功能开发中`, 'info');
+                }
+            }
+
+            deleteUser(userId) {
+                const user = this.users.find(u => u.id === userId);
+                if (user && confirm(`确定要删除用户 ${user.name} 吗？`)) {
+                    this.users = this.users.filter(u => u.id !== userId);
+                    this.renderUserManagement();
+                    this.showNotification('删除用户', `用户 ${user.name} 已删除`, 'success');
+                }
+            }
+
+            showAddUserForm() {
+                document.getElementById('add-user-form').style.display = 'block';
+            }
+
+            hideAddUserForm() {
+                document.getElementById('add-user-form').style.display = 'none';
+            }
+
+            // 模态框控制
+            closeModal(modalId) {
+                document.getElementById(modalId).classList.remove('active');
+            }
+
             // 全局搜索功能
             globalSearch(query) {
                 if (query.length < 2) return;
@@ -3171,202 +3399,6 @@ CPU使用率: ${node.cpu}%
 状态: ${warning.resolved ? '已处理' : '未处理'}`);
                 }
             }
-
-            // 添加新设备
-            addNewDevice(deviceData) {
-                const newDevice = {
-                    id: 'DEV' + (this.devices.length + 1).toString().padStart(3, '0'),
-                    name: deviceData.name,
-                    type: deviceData.type,
-                    status: 'online',
-                    location: deviceData.location,
-                    battery: deviceData.battery,
-                    signal: '强',
-                    lastReport: '刚刚',
-                    temperature: 22.5 + Math.random() * 5,
-                    humidity: 60 + Math.random() * 20
-                };
-                
-                this.devices.push(newDevice);
-                this.filteredDevices = [...this.devices];
-                this.renderDevicesTable();
-                this.updateBadges();
-                this.showNotification('设备添加', `成功添加设备: ${newDevice.name}`, 'success');
-            }
-
-            // 添加新节点
-            addNewNode(nodeData) {
-                const newNode = {
-                    id: 'NODE' + (this.nodes.length + 1).toString().padStart(3, '0'),
-                    name: nodeData.name,
-                    status: 'online',
-                    cpu: 20 + Math.random() * 30,
-                    memory: 30 + Math.random() * 40,
-                    storage: 20 + Math.random() * 30,
-                    network: 15 + Math.random() * 20,
-                    devices: 0,
-                    location: nodeData.location,
-                    lastActive: '刚刚'
-                };
-                
-                this.nodes.push(newNode);
-                this.renderNodesGrid();
-                this.updateBadges();
-                this.showNotification('节点添加', `成功添加节点: ${newNode.name}`, 'success');
-            }
-
-            // 生成数据分析报告
-            generateReport() {
-                const now = new Date();
-                const reportDate = now.toLocaleDateString('zh-CN');
-                const reportTime = now.toLocaleTimeString('zh-CN');
-                
-                // 计算统计数据
-                const totalDevices = this.devices.length;
-                const onlineDevices = this.devices.filter(d => d.status === 'online').length;
-                const offlineDevices = this.devices.filter(d => d.status === 'offline').length;
-                const warningDevices = this.devices.filter(d => d.status === 'warning').length;
-                
-                const avgTemperature = (this.analyticsData.temperature.reduce((a, b) => a + b, 0) / this.analyticsData.temperature.length).toFixed(1);
-                const avgHumidity = (this.analyticsData.humidity.reduce((a, b) => a + b, 0) / this.analyticsData.humidity.length).toFixed(0);
-                const maxTemperature = Math.max(...this.analyticsData.temperature).toFixed(1);
-                const minTemperature = Math.min(...this.analyticsData.temperature).toFixed(1);
-                
-                // 生成报告HTML
-                const reportHTML = `
-                    <div class="report-container">
-                        <div class="report-header">
-                            <h1 class="report-title">5G边缘计算平台数据分析报告</h1>
-                            <div class="report-subtitle">蚌埠学院 · 物联网工程实验室</div>
-                            <div>生成时间: ${reportDate} ${reportTime}</div>
-                        </div>
-                        
-                        <div class="report-section">
-                            <h2 class="report-section-title">系统概览</h2>
-                            <table class="report-table">
-                                <tr>
-                                    <th>指标</th>
-                                    <th>数值</th>
-                                    <th>状态</th>
-                                </tr>
-                                <tr>
-                                    <td>总设备数</td>
-                                    <td>${totalDevices}台</td>
-                                    <td>正常</td>
-                                </tr>
-                                <tr>
-                                    <td>在线设备</td>
-                                    <td>${onlineDevices}台</td>
-                                    <td>良好</td>
-                                </tr>
-                                <tr>
-                                    <td>离线设备</td>
-                                    <td>${offlineDevices}台</td>
-                                    <td>${offlineDevices > 0 ? '需关注' : '正常'}</td>
-                                </tr>
-                                <tr>
-                                    <td>异常设备</td>
-                                    <td>${warningDevices}台</td>
-                                    <td>${warningDevices > 0 ? '需处理' : '正常'}</td>
-                                </tr>
-                                <tr>
-                                    <td>边缘节点</td>
-                                    <td>${this.nodes.length}个</td>
-                                    <td>${this.nodes.filter(n => n.status === 'online').length === this.nodes.length ? '全部正常' : '部分异常'}</td>
-                                </tr>
-                            </table>
-                        </div>
-                        
-                        <div class="report-section">
-                            <h2 class="report-section-title">环境数据统计</h2>
-                            <table class="report-table">
-                                <tr>
-                                    <th>参数</th>
-                                    <th>平均值</th>
-                                    <th>最大值</th>
-                                    <th>最小值</th>
-                                </tr>
-                                <tr>
-                                    <td>温度</td>
-                                    <td>${avgTemperature}°C</td>
-                                    <td>${maxTemperature}°C</td>
-                                    <td>${minTemperature}°C</td>
-                                </tr>
-                                <tr>
-                                    <td>湿度</td>
-                                    <td>${avgHumidity}%</td>
-                                    <td>${Math.max(...this.analyticsData.humidity)}%</td>
-                                    <td>${Math.min(...this.analyticsData.humidity)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>光照强度</td>
-                                    <td>${(this.analyticsData.light.reduce((a, b) => a + b, 0) / this.analyticsData.light.length).toFixed(0)} lux</td>
-                                    <td>${Math.max(...this.analyticsData.light)} lux</td>
-                                    <td>${Math.min(...this.analyticsData.light)} lux</td>
-                                </tr>
-                            </table>
-                        </div>
-                        
-                        <div class="report-section">
-                            <h2 class="report-section-title">异常检测结果</h2>
-                            <table class="report-table">
-                                <tr>
-                                    <th>异常类型</th>
-                                    <th>数量</th>
-                                    <th>状态</th>
-                                </tr>
-                                <tr>
-                                    <td>温度异常</td>
-                                    <td>${this.analyticsData.temperature.filter(t => t > 30).length}次</td>
-                                    <td>${this.analyticsData.temperature.filter(t => t > 30).length > 0 ? '需关注' : '正常'}</td>
-                                </tr>
-                                <tr>
-                                    <td>湿度异常</td>
-                                    <td>${this.analyticsData.humidity.filter(h => h > 80).length}次</td>
-                                    <td>${this.analyticsData.humidity.filter(h => h > 80).length > 0 ? '需关注' : '正常'}</td>
-                                </tr>
-                                <tr>
-                                    <td>设备离线</td>
-                                    <td>${offlineDevices}台</td>
-                                    <td>${offlineDevices > 0 ? '需处理' : '正常'}</td>
-                                </tr>
-                            </table>
-                        </div>
-                        
-                        <div class="report-summary">
-                            <h3>报告总结</h3>
-                            <p>根据${this.getTimeRangeLabel(this.currentTimeRange)}的数据分析，系统整体运行${onlineDevices / totalDevices > 0.9 ? '良好' : '基本正常'}。</p>
-                            <p>环境参数在正常范围内波动，${this.analyticsData.temperature.filter(t => t > 30).length > 0 ? '存在温度异常情况，建议检查相关设备' : '无显著异常情况'}。</p>
-                            <p>${offlineDevices > 0 ? `有${offlineDevices}台设备处于离线状态，建议及时检查连接。` : '所有设备连接正常。'}</p>
-                        </div>
-                    </div>
-                `;
-                
-                return reportHTML;
-            }
-
-            // 导出数据
-            exportData() {
-                // 创建CSV格式的数据
-                let csvContent = "时间,温度(°C),湿度(%),光照强度(lux),气压(hPa),空气质量指数\n";
-                
-                for (let i = 0; i < this.analyticsData.timeLabels.length; i++) {
-                    csvContent += `${this.analyticsData.timeLabels[i]},${this.analyticsData.temperature[i]},${this.analyticsData.humidity[i]},${this.analyticsData.light[i]},${this.analyticsData.pressure[i]},${this.analyticsData.airQuality[i]}\n`;
-                }
-                
-                // 创建下载链接
-                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-                const url = URL.createObjectURL(blob);
-                const link = document.createElement("a");
-                link.setAttribute("href", url);
-                link.setAttribute("download", `5g_edge_data_${new Date().toISOString().split('T')[0]}.csv`);
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                this.showNotification('数据导出', '数据已成功导出为CSV文件', 'success');
-            }
         }
 
         // 全局平台实例
@@ -3397,24 +3429,8 @@ CPU使用率: ${node.cpu}%
             document.getElementById(modalId).classList.remove('active');
         }
 
-        function addNewDevice() {
-            const name = document.getElementById('device-name').value;
-            const type = document.getElementById('device-type').value;
-            const location = document.getElementById('device-location').value;
-            const battery = parseInt(document.getElementById('device-battery').value);
-            
-            if (!name || !location) {
-                platform.showNotification('输入错误', '请填写完整的设备信息', 'warning');
-                return;
-            }
-            
-            platform.addNewDevice({ name, type, location, battery });
-            closeModal('add-device-modal');
-            
-            // 重置表单
-            document.getElementById('device-name').value = '';
-            document.getElementById('device-location').value = '';
-            document.getElementById('device-battery').value = '100';
+        function addDevice() {
+            platform.addDevice();
         }
 
         function refreshDevices() {
@@ -3434,23 +3450,8 @@ CPU使用率: ${node.cpu}%
             document.getElementById('add-node-modal').classList.add('active');
         }
 
-        function addNewNode() {
-            const name = document.getElementById('node-name').value;
-            const location = document.getElementById('node-location').value;
-            const maxDevices = parseInt(document.getElementById('node-max-devices').value);
-            
-            if (!name || !location) {
-                platform.showNotification('输入错误', '请填写完整的节点信息', 'warning');
-                return;
-            }
-            
-            platform.addNewNode({ name, location, maxDevices });
-            closeModal('add-node-modal');
-            
-            // 重置表单
-            document.getElementById('node-name').value = '';
-            document.getElementById('node-location').value = '';
-            document.getElementById('node-max-devices').value = '10';
+        function addNode() {
+            platform.addNode();
         }
 
         function refreshNodes() {
@@ -3492,18 +3493,7 @@ CPU使用率: ${node.cpu}%
         }
 
         function showSystemSettings() {
-            document.getElementById('system-settings-modal').classList.add('active');
-        }
-
-        function saveSystemSettings() {
-            platform.showNotification('系统设置', '系统设置已保存', 'success');
-            closeModal('system-settings-modal');
-        }
-
-        function generateNewApiKey() {
-            const newKey = 'sk_5g_edge_' + Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-            document.getElementById('api-key').value = newKey;
-            platform.showNotification('API密钥', '已生成新的API密钥', 'info');
+            alert('系统设置功能开发中...\n包含通知设置、数据保留策略、API配置等');
         }
 
         function showPerformanceMonitor() {
@@ -3511,7 +3501,19 @@ CPU使用率: ${node.cpu}%
         }
 
         function manageUsers() {
-            alert('用户管理功能开发中...\n支持添加用户、权限管理、角色分配等');
+            document.getElementById('user-management-modal').classList.add('active');
+        }
+
+        function showAddUserForm() {
+            platform.showAddUserForm();
+        }
+
+        function hideAddUserForm() {
+            platform.hideAddUserForm();
+        }
+
+        function addUser() {
+            platform.addUser();
         }
 
         // 数据分析功能
@@ -3549,24 +3551,7 @@ CPU使用率: ${node.cpu}%
         }
 
         function generateReport() {
-            const reportHTML = platform.generateReport();
-            document.getElementById('report-preview-content').innerHTML = reportHTML;
-            document.getElementById('report-preview-modal').classList.add('active');
-        }
-
-        function downloadReport() {
-            const reportHTML = platform.generateReport();
-            const blob = new Blob([reportHTML], { type: 'text/html;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.setAttribute("href", url);
-            link.setAttribute("download", `5g_edge_report_${new Date().toISOString().split('T')[0]}.html`);
-            link.style.visibility = 'hidden';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            platform.showNotification('报告下载', '分析报告已下载', 'success');
+            platform.generateReport();
         }
 
         function refreshAnalytics() {
@@ -3587,22 +3572,7 @@ CPU使用率: ${node.cpu}%
         }
 
         function downloadChart(chartId) {
-            const chart = platform.charts[chartId];
-            if (chart) {
-                const url = chart.getDataURL({
-                    type: 'png',
-                    pixelRatio: 2,
-                    backgroundColor: '#fff'
-                });
-                const link = document.createElement('a');
-                link.href = url;
-                link.download = `chart_${chartId}_${new Date().toISOString().split('T')[0]}.png`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                platform.showNotification('图表下载', '图表已下载为PNG文件', 'success');
-            }
+            platform.showNotification('图表下载', `正在下载 ${chartId}...`, 'info');
         }
 
         function toggleFullscreen(chartId) {
